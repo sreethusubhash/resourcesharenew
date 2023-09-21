@@ -1,5 +1,6 @@
 from django import forms
 
+
 #TODO:Add fields for category(radio) and tags(select)
 class PostResourceForm(forms.Form):
     title = forms.CharField(
