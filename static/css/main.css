@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'Gill Sans','Gill Sans MT';
+}
+h1{
+    text-align: center;
+    color: blue;
+    
+}
+.container{
+    width: 100%;
+    min-height:100%
+}
+main{
+    color:#3333;
+    width: 95%;
+    margin: 0 auto;
+   
+    }
+.inactive{
+    color: rgb(217,111,111);
+}

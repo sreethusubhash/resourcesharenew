@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% load custom_filter %}
+<!---->
+{% block title %}{{block.super}}
+-Users{% endblock title%}
+<!---->
+{%block content%}
+
+        <span>
+            We r pround of our {{users|length}} users
+        </span> 
+    <ul>{%for user in users%}
+        
+     <li>
+    {% include 'includes/style_active_user.html'%}
+
+        </li>
+        {%endfor%}
+    </ul>
+   {%endblock content%}
