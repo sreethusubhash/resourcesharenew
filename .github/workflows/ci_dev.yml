@@ -8,8 +8,15 @@ name: Django Test
 on:
   push:
     branches: ["dev"]
-  pull_request:
+  pull_request_target: # To be able to access the secrets
+  
     branches: ["dev"]
+    types: [opened] # run workflow only for opened pull requests.
+    paths: # run workflow only when .py files are modified
+      - "**.py"
+    
+env: ${{secrets}}
+
 
 jobs:
   build: # job id
@@ -32,6 +39,7 @@ jobs:
       postgres_main:
         image: postgres:15
         env:
+          #DB_USER: ${{ secrets.DB_USER}}
           POSTGRES_USER: ${{ env.DB_USER }}
           POSTGRES_PASSWORD: ${{ env.DB_PWD }}
           POSTGRES_DB: ${{ env.DB_NAME }}

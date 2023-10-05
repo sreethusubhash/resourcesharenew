@@ -114,7 +114,7 @@ def resource_post(request):
         #validation
         #.is_valid() method
         #.cleaned_data() method
-        if form.i_valid():
+        if form.is_valid():
             data=form.cleaned_data
             #manually add a user id
             #save it to db

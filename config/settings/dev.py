@@ -8,7 +8,7 @@ environ.Env.read_env(str(BASE_DIR/ '.env'))
 SECRET_KEY =env.str("SECRET_KEY")
 
 #SECRET_KEY = "django-insecure-!v1*8nv5kcj$m8_o^bc)t#ys@5qu6#d_aj))u5kowt6qos@jdk"
-DEBUG = False#True
+DEBUG = True
 ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Database

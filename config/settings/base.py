@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -18,7 +18,7 @@ CUSTOM_APPS = [
     "django.contrib.postgres",
     "apps.core"
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = ['rest_framework']
 
 INSTALLED_APPS = [*DEFAULT_APPS, *CUSTOM_APPS,*THIRD_PARTY_APPS]
 
@@ -33,7 +33,7 @@ MIDDLEWARE = [
     "apps.core.middleware.log.simple_logging_middleware",
     #"apps.core.middleware.logging.ViewExecutionTimeMiddleware",
     #"apps.core.middleware.logging.ViewExecutionTime2Middleware",
-    "apps.resources.middleware.printing.printing_middleware",
+    #"apps.resources.middleware.printing.printing_middleware",
 ]
 ROOT_URLCONF = "config.urls"
 
@@ -53,6 +53,7 @@ TEMPLATES = [
     },
 ]
 
+#REST_FRAMEWORK={}
 WSGI_APPLICATION = "config.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -87,8 +88,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [str(BASE_DIR / "static")]
-
+#STATICFILES_DIRS = [str(BASE_DIR / "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
