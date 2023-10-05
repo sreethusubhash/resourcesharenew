@@ -1,13 +1,18 @@
 from rest_framework.decorators import api_view
-from .models import Resources,Category
 from rest_framework.response import Response
-from . import serializers
-from rest_framework.generics import ListAPIView,RetrieveAPIView,DestroyAPIView
-
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView
+from rest_framework.views import APIView
 from rest_framework import viewsets
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from .models import Resources, Category
+from .serializers import serializers
 from . import mixins
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
+#@authentication_classes([TokenAuthentication])
 def list_resources(request):
     
     queryset = (Resources.objects.select_related#query set is an attribute in DRF's CBV that specifies the set of objs to be returned by the view
@@ -51,6 +56,8 @@ def list_category(request):
 
 #class based apiview
 class ListResource(ListAPIView):
+    authentication_classes=(BasicAuthentication,)#tuple or list
+    permission_classes=(IsAuthenticated,)
     queryset = (Resources.objects.select_related
     ('user_id','cat_id')
     .prefetch_related('tags').all())

@@ -18,7 +18,9 @@ CUSTOM_APPS = [
     "django.contrib.postgres",
     "apps.core"
 ]
-THIRD_PARTY_APPS = ['rest_framework']
+THIRD_PARTY_APPS = ['rest_framework',
+                    'rest_framework.authtoken',#generate tables to manage the token
+                    ]
 
 INSTALLED_APPS = [*DEFAULT_APPS, *CUSTOM_APPS,*THIRD_PARTY_APPS]
 
@@ -53,7 +55,12 @@ TEMPLATES = [
     },
 ]
 
-#REST_FRAMEWORK={}
+
+#REST_FRAMEWORK={'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']}
+#authentication
+REST_FRAMEWORK={'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']}
+
+
 WSGI_APPLICATION = "config.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
